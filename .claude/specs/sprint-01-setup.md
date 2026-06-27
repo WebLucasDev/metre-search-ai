@@ -7,11 +7,11 @@ lógica de bot.
 
 ## Checklist
 
-- [ ] `tsconfig.json` em modo strict
-- [ ] `wrangler.jsonc` com `name`, `main`, `compatibility_date` recente e binding `ai`
-- [ ] Criar o **molde** do `.dev.vars` com as chaves `DISCORD_PUBLIC_KEY`, `DISCORD_APPLICATION_ID`, `DISCORD_BOT_TOKEN`, `DISCORD_GUILD_ID` (valores preenchidos por mim desenvolvedor)
-- [ ] Adicionar `.dev.vars` ao `.gitignore`
-- [ ] Scripts no `package.json`: `dev`, `deploy`, `register`, `typecheck`
+- [x] `tsconfig.json` em modo strict
+- [x] `wrangler.jsonc` com `name`, `main`, `compatibility_date` recente e binding `ai`
+- [x] Criar o **molde** do `.dev.vars` com as chaves `DISCORD_PUBLIC_KEY`, `DISCORD_APPLICATION_ID`, `DISCORD_BOT_TOKEN`, `DISCORD_GUILD_ID` (valores preenchidos por mim desenvolvedor)
+- [x] Adicionar `.dev.vars` ao `.gitignore`
+- [x] Scripts no `package.json`: `dev`, `deploy`, `register`, `typecheck`
 
 ## Definition of Done
 - `npm run dev` sobe o Worker localmente sem erro.

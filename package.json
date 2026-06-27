@@ -1,9 +1,11 @@
 {
-  "name": "my-app",
+  "name": "metre-search-ai",
   "type": "module",
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy --minify",
+    "register": "tsx scripts/register-commands.ts",
+    "typecheck": "tsc --noEmit",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings"
   },
   "dependencies": {
@@ -12,6 +14,8 @@
     "hono": "^4.12.27"
   },
   "devDependencies": {
+    "tsx": "^4.22.4",
+    "typescript": "^5.9.3",
     "wrangler": "^4.4.0"
   }
 }

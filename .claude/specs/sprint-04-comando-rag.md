@@ -13,7 +13,7 @@ recebe a resposta do RAG.
 
 ### Camada de RAG
 - [ ] `src/rag.ts`: interface `RagProvider { perguntar(pergunta: string): Promise<string> }`
-- [ ] Implementar `AiSearchProvider` usando `env.AI.autorag('metre-docs').aiSearch({ query, model: '@cf/google/gemma-4-26b-a4b-it' })` (omita `model` se já estiver definido nas Settings)
+- [ ] Implementar `AiSearchProvider` usando `env.AI.autorag('metre-search-ai-rag').aiSearch({ query, model: '@cf/google/gemma-4-26b-a4b-it' })` (omita `model` se já estiver definido nas Settings)
 - [ ] Definir um system prompt curto (parâmetro do `aiSearch`) pedindo respostas objetivas — o Gemma 4 faz reasoning e pode ser verboso
 - [ ] `createRagProvider(env)` retornando a implementação (factory)
 - [ ] Tratar resposta vazia com um fallback amigável
