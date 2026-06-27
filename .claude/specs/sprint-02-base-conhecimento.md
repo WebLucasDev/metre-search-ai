@@ -12,19 +12,19 @@ colaboradores, validada no Playground, **antes** de integrar com o bot.
 ## Parte A — Você (painel da Cloudflare)
 
 ### R2 — fonte dos dados
-- [ ] Criar um bucket R2 (ex.: `metre-search-ai-r2`)
-- [ ] Subir os arquivos `.md` no **bucket** (com R2 como fonte, o upload vai para o bucket, não "para a instância")
+- [x] Criar um bucket R2 (ex.: `metre-search-ai-r2`)
+- [x] Subir os arquivos `.md` no **bucket** (com R2 como fonte, o upload vai para o bucket, não "para a instância")
 
 ### AI Search — instância
-- [ ] Criar a instância de AI Search na seção **IA** do painel (AI Search, antigo AutoRAG); anotar o nome (ex.: `metre-search-ai-rag`)
-- [ ] Selecionar o bucket R2 (`metre-search-ai-r2`) como fonte de dados e disparar a indexação
-- [ ] Definir o modelo de geração como `@cf/google/gemma-4-26b-a4b-it` (Gemma 4) e, se quiser, o reranking
-- [ ] Se o modelo ainda não aparecer no dropdown, deixar o default e sobrescrever por requisição no código (ver Sprint 04)
+- [x] Criar a instância de AI Search na seção **IA** do painel (AI Search, antigo AutoRAG); anotar o nome (ex.: `metre-search-ai-rag`)
+- [x] Selecionar o bucket R2 (`metre-search-ai-r2`) como fonte de dados e disparar a indexação
+- [x] Definir o modelo de geração como `@cf/google/gemma-4-26b-a4b-it` (Gemma 4) e, se quiser, o reranking
+- [x] Se o modelo ainda não aparecer no dropdown, deixar o default e sobrescrever por requisição no código (ver Sprint 04)
 
 ### Validação
-- [ ] Testar 10–15 perguntas reais no Playground
-- [ ] Ajustar/expandir os `.md` no bucket onde a resposta vier fraca (reindexa sozinho)
-- [ ] Confirmar que o nome da instância (`metre-search-ai-rag`) será o mesmo usado em `src/rag.ts`
+- [x] Testar 10–15 perguntas reais no Playground
+- [x] Ajustar/expandir os `.md` no bucket onde a resposta vier fraca (reindexa sozinho)
+- [x] Confirmar que o nome da instância (`metre-search-ai-rag`) será o mesmo usado em `src/rag.ts`
 
 ## Definition of Done
 - A instância responde corretamente à maioria das perguntas de teste no Playground.
