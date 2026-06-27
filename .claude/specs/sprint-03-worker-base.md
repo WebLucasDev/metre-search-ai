@@ -10,12 +10,12 @@ PING, a ponto de o Discord aceitar a Interactions Endpoint URL. Ainda sem comand
 > Ordem de execução: Parte A antes da Parte B.
 
 ## Parte A — Claude Code (código)
-- [ ] `src/index.ts`: app Hono com `Bindings` tipado
-- [ ] Middleware em `/interactions` que lê os headers `x-signature-ed25519` e `x-signature-timestamp` e o corpo cru
-- [ ] Validar com `verifyKey(body, signature, timestamp, PUBLIC_KEY)`; responder 401 se inválido
-- [ ] Repassar a interação já parseada ao handler (não ler o corpo duas vezes)
-- [ ] Handler: responder ao `InteractionType.PING` com `{ type: InteractionResponseType.PONG }`
-- [ ] Tratar tipo desconhecido com 400
+- [x] `src/index.ts`: app Hono com `Bindings` tipado
+- [x] Middleware em `/interactions` que lê os headers `x-signature-ed25519` e `x-signature-timestamp` e o corpo cru
+- [x] Validar com `verifyKey(body, signature, timestamp, PUBLIC_KEY)`; responder 401 se inválido
+- [x] Repassar a interação já parseada ao handler (não ler o corpo duas vezes)
+- [x] Handler: responder ao `InteractionType.PING` com `{ type: InteractionResponseType.PONG }`
+- [x] Tratar tipo desconhecido com 400
 
 ## Parte B — Você (deploy + navegador)
 - [ ] (Se ainda não fez) `wrangler login` para autorizar a CLI
