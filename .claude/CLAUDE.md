@@ -8,7 +8,7 @@ produtos e processos internos, usando RAG. Roda 100% na Cloudflare (serverless).
 - Runtime: Cloudflare Workers
 - Framework: Hono (TypeScript)
 - RAG: Cloudflare AI Search (ex-AutoRAG), via binding `AI`
-- Modelo de geração: `@cf/google/gemma-4-26b-a4b-it` (Gemma 4, Google). Definido nas Settings do AI Search; pode ser sobrescrito por requisição no `aiSearch({ model })`. É um modelo de reasoning — peça respostas objetivas via system prompt.
+- Modelo de geração: `@cf/zai-org/glm-4.7-flash` (GLM 4.7 Flash), definido nas **Settings → Generation** da instância de AI Search. O `gemma-4` do plano original não existe no catálogo desta conta. O código usa `env.AI.autorag('metre-search-ai-rag').aiSearch({ query, system_prompt })` — a API nova de namespace (`env.AI.aiSearch()`) retorna `Account not authorized` nesta conta, e a `autorag().aiSearch()` **não** aceita override de `model`, então o modelo fica nas Settings. Peça respostas objetivas via `system_prompt`.
 - Discord: Interactions API (webhook HTTP, slash commands)
 - Verificação de assinatura: `discord-interactions` (`verifyKey`)
 - Tipos: `discord-api-types`

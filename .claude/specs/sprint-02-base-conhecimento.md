@@ -18,8 +18,8 @@ colaboradores, validada no Playground, **antes** de integrar com o bot.
 ### AI Search — instância
 - [x] Criar a instância de AI Search na seção **IA** do painel (AI Search, antigo AutoRAG); anotar o nome (ex.: `metre-search-ai-rag`)
 - [x] Selecionar o bucket R2 (`metre-search-ai-r2`) como fonte de dados e disparar a indexação
-- [x] Definir o modelo de geração como `@cf/google/gemma-4-26b-a4b-it` (Gemma 4) e, se quiser, o reranking
-- [x] Se o modelo ainda não aparecer no dropdown, deixar o default e sobrescrever por requisição no código (ver Sprint 04)
+- [x] ~~Definir o modelo de geração como `@cf/google/gemma-4-26b-a4b-it`~~ — esse modelo não existe no catálogo de geração do AI Search desta conta; escolhido `@cf/zai-org/glm-4.7-flash` em seu lugar
+- [x] Modelo não aparece no dropdown → fica o default das Settings e o código fixa `@cf/zai-org/glm-4.7-flash` por requisição (ver Sprint 04)
 
 ### Validação
 - [x] Testar 10–15 perguntas reais no Playground
@@ -36,4 +36,4 @@ colaboradores, validada no Playground, **antes** de integrar com o bot.
 - O modelo de **embedding** é definido na criação da instância e é fixo; o de **geração** pode ser trocado depois.
 - A reindexação é contínua/automática: mudanças nos `.md` levam um tempo para refletir.
 - Qualidade da resposta = qualidade da base. Comece pequeno (poucas FAQs boas) e expanda conforme as perguntas reais aparecerem.
-- O Gemma 4 é um modelo de reasoning: oriente respostas curtas via system prompt para controlar verbosidade e custo de tokens de saída.
+- Oriente respostas curtas via system prompt para controlar verbosidade e custo de tokens de saída.
