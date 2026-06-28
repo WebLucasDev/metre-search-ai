@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy --minify",
-    "register": "tsx scripts/register-commands.ts",
+    "register": "tsx --env-file=.dev.vars scripts/register-commands.ts",
     "typecheck": "tsc --noEmit",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings"
   },
