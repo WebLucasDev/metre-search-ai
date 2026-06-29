@@ -18,11 +18,11 @@ PING, a ponto de o Discord aceitar a Interactions Endpoint URL. Ainda sem comand
 - [x] Tratar tipo desconhecido com 400
 
 ## Parte B — Você (deploy + navegador)
-- [ ] (Se ainda não fez) `wrangler login` para autorizar a CLI
-- [ ] `npm run deploy` e anotar a URL do Worker (o Claude Code pode rodar o comando, mas a conta é sua)
-- [ ] Configurar os secrets de produção digitando os valores: `wrangler secret put DISCORD_PUBLIC_KEY` (e os demais) — os valores são segredos, só você os tem
-- [ ] Colar a URL `.../interactions` no campo "Interactions Endpoint URL" do app no Discord (navegador)
-- [ ] Confirmar que o Discord salva a URL
+- [x] (Se ainda não fez) `wrangler login` para autorizar a CLI
+- [x] `npm run deploy` e anotar a URL do Worker (o Claude Code pode rodar o comando, mas a conta é sua)
+- [x] Configurar os secrets de produção digitando os valores: `wrangler secret put DISCORD_PUBLIC_KEY` (e os demais) — os valores são segredos, só você os tem
+- [x] Colar a URL `.../interactions` no campo "Interactions Endpoint URL" do app no Discord (navegador)
+- [x] Confirmar que o Discord salva a URL
 
 ## Definition of Done
 - O Discord aceita e salva a Interactions Endpoint URL.

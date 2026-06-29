@@ -26,11 +26,11 @@ recebe a resposta do RAG.
 - [x] Fazer `PATCH` em `.../webhooks/{APP_ID}/{token}/messages/@original` com a resposta (≤ 2000 chars)
 
 ## Parte B — Você (rodar + testar)
-- [ ] `npm run register` para registrar o comando (o Claude Code pode rodar se o bot token estiver no ambiente)
-- [ ] (Se o código mudou) `npm run deploy`
-- [ ] Confirmar o `/metre` aparecendo no servidor da Metre (Discord)
-- [ ] Usar `/metre` e ver o "pensando..." virar a resposta
-- [ ] Testar uma pergunta fora da base (deve cair no fallback)
+- [x] `npm run register` para registrar o comando (o Claude Code pode rodar se o bot token estiver no ambiente)
+- [x] (Se o código mudou) `npm run deploy`
+- [x] Confirmar o `/metre` aparecendo no servidor (Discord)
+- [x] Usar `/metre` e ver o "pensando..." virar a resposta
+- [x] Testar uma pergunta fora da base (deve cair no fallback)
 
 ## Definition of Done
 - `/metre` responde com conteúdo da base interna sem estourar os 3s.

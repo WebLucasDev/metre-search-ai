@@ -25,15 +25,15 @@
 - [x] Escrever o workflow de CI/CD (GitHub Actions) que faz deploy no push para `main` — `.github/workflows/ci.yml`
 
 ### Evolução (backlog)
-- [ ] Refatorar o roteamento para um registry de comandos (padrão Command) ao adicionar o 2º comando
-- [ ] Avaliar `discord-verify` (WebCrypto nativo) se a verificação virar gargalo
-- [ ] Autocomplete de perguntas frequentes
+- [x] Refatorar o roteamento para um registry de comandos (padrão Command) ao adicionar o 2º comando
+- [x] Avaliar `discord-verify` (WebCrypto nativo) se a verificação virar gargalo
+- [x] Autocomplete de perguntas frequentes
 
 ## Parte B — Você (painel + observação)
-- [ ] Criar um `CF_API_TOKEN` no painel da Cloudflare (Meu Perfil → Tokens de API) e pegar o `CF_ACCOUNT_ID`
-- [ ] Adicionar `CF_API_TOKEN` e `CF_ACCOUNT_ID` como secrets no repositório do GitHub (Settings → Secrets and variables → Actions)
-- [ ] Acompanhar os logs com `wrangler tail` quando algo falhar
-- [ ] Acompanhar métricas (nº de perguntas, taxa de fallback) na aba Metrics da instância de AI Search
+- [x] Criar um `CF_API_TOKEN` no painel da Cloudflare (Meu Perfil → Tokens de API) e pegar o `CF_ACCOUNT_ID`
+- [x] Adicionar `CF_API_TOKEN` e `CF_ACCOUNT_ID` como secrets no repositório do GitHub (Settings → Secrets and variables → Actions)
+- [x] Acompanhar os logs com `wrangler tail` quando algo falhar
+- [x] Acompanhar métricas (nº de perguntas, taxa de fallback) na aba Metrics da instância de AI Search
 
 ## Definition of Done
 - Erros não derrubam a resposta: o usuário sempre recebe algo.
