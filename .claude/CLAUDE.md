@@ -35,8 +35,11 @@ NUNCA chame o AI Search antes de responder a interação. A resposta final vai p
   handshake PING/PONG, roteamento de comandos. O handler só orquestra — sem regra de negócio aqui.
 - `src/rag.ts` — interface `RagProvider` + implementação `AiSearchProvider`.
   A regra de negócio depende da interface, não da implementação (Dependency Inversion).
-- `src/discord.ts` — helpers e tipos do Discord (follow-up, constantes).
+- `src/discord.ts` — helpers do Discord: divisão de mensagens (>2000) e entrega via webhook (edita o `@original` + follow-ups).
+- `src/logger.ts` — logs estruturados em JSON (`logEvent`/`logError`); nunca logar segredos.
 - `scripts/register-commands.ts` — registra os slash commands. Rodar sob demanda, não no deploy.
+- `test/` — testes Vitest (verificação de assinatura + roteamento), via `app.fetch` com env/ctx fake.
+- `.github/workflows/ci.yml` — CI (typecheck/lint/format/test) + deploy no push para `main` (secrets `CF_API_TOKEN`/`CF_ACCOUNT_ID`).
 - `specs/` — checklists de sprint. Comece sempre por `specs/ROADMAP.md`.
 - `docs/reference/` — docs externas em markdown para consulta. Índice em `docs/reference/SOURCES.md`.
 
@@ -44,8 +47,10 @@ NUNCA chame o AI Search antes de responder a interação. A resposta final vai p
 
 - `npm run dev` — `wrangler dev` (servidor local)
 - `npm run deploy` — `wrangler deploy`
-- `npm run register` — registra os comandos no Discord (guild command)
+- `npm run register` — registra os comandos no Discord (guild command); carrega `.dev.vars`
 - `npm run typecheck` — `tsc --noEmit`
+- `npm run lint` / `npm run format` — ESLint / Prettier (`format:check` no CI)
+- `npm test` — Vitest
 
 **IMPORTANTE:** este projeto usa npm + Wrangler. Não assuma Vite, Jest ou outro toolchain
 sem confirmar no `package.json`.

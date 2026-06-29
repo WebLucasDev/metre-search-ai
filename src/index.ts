@@ -9,8 +9,9 @@ import {
   type APIApplicationCommandInteraction,
   type APIInteraction,
 } from 'discord-api-types/v10'
-import { createRagProvider } from './rag'
-import { editOriginalResponse } from './discord'
+import { createRagProvider, type RagAnswer } from './rag'
+import { deliverAnswer, editOriginalResponse } from './discord'
+import { logError, logEvent } from './logger'
 
 /**
  * Variáveis de ambiente do Worker: bindings do Cloudflare (AI Search) + segredos
@@ -97,7 +98,8 @@ app.post('/interactions', (c) => {
 function extractQuestion(
   interaction: APIApplicationCommandInteraction,
 ): string | undefined {
-  if (interaction.data.type !== ApplicationCommandType.ChatInput) return undefined
+  if (interaction.data.type !== ApplicationCommandType.ChatInput)
+    return undefined
 
   const option = interaction.data.options?.find((o) => o.name === 'pergunta')
   if (option?.type === ApplicationCommandOptionType.String) return option.value
@@ -114,18 +116,35 @@ async function answerWithRag(
   interactionToken: string,
   question: string,
 ): Promise<void> {
+  const start = Date.now()
   try {
     const rag = createRagProvider(env)
     const answer = await rag.ask(question)
-    await editOriginalResponse(env.DISCORD_APPLICATION_ID, interactionToken, answer)
+    await deliverAnswer(
+      env.DISCORD_APPLICATION_ID,
+      interactionToken,
+      formatAnswer(answer),
+    )
+    logEvent('command.metre', {
+      question,
+      sources: answer.sources.length,
+      ms: Date.now() - start,
+    })
   } catch (error) {
-    console.error('Falha ao responder /metre:', String(error))
+    logError('command.metre', error, { question, ms: Date.now() - start })
     await editOriginalResponse(
       env.DISCORD_APPLICATION_ID,
       interactionToken,
       'Tive um problema ao buscar a resposta agora. Pode tentar de novo em instantes?',
     ).catch(() => {})
   }
+}
+
+/** Monta o conteúdo final: texto do RAG + rodapé com as fontes, se houver. */
+function formatAnswer(answer: RagAnswer): string {
+  if (answer.sources.length === 0) return answer.text
+  const sources = answer.sources.map((source) => `\`${source}\``).join(', ')
+  return `${answer.text}\n\n_Fontes: ${sources}_`
 }
 
 export default app
