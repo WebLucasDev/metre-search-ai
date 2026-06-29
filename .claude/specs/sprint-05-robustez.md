@@ -11,18 +11,18 @@
 ## Parte A — Claude Code (código, testes, config)
 
 ### Erros e UX
-- [ ] Envolver o fluxo de RAG em try/catch; em erro, dar `PATCH` com mensagem amigável
-- [ ] Dividir respostas > 2000 chars em múltiplas mensagens (follow-up) em vez de truncar
-- [ ] (Opcional) Respostas efêmeras (flag 64) para não poluir o canal
-- [ ] (Opcional) Incluir as fontes/links dos trechos usados na resposta
+- [x] Envolver o fluxo de RAG em try/catch; em erro, dar `PATCH` com mensagem amigável
+- [x] Dividir respostas > 2000 chars em múltiplas mensagens (follow-up) em vez de truncar
+- [x] ~~(Opcional) Respostas efêmeras~~ — decisão: respostas **públicas** no canal (vira histórico de conhecimento); só a mensagem de uso incorreto é efêmera
+- [x] (Opcional) Incluir as fontes/links dos trechos usados na resposta — rodapé com os arquivos `.md`
 
 ### Observabilidade (código)
-- [ ] Logs estruturados (sem vazar dados sensíveis)
+- [x] Logs estruturados (sem vazar dados sensíveis) — `src/logger.ts`, JSON via `console`
 
 ### Qualidade
-- [ ] Testes para a verificação de assinatura e para o roteamento de comandos
-- [ ] Configurar lint/format (Biome ou ESLint + Prettier)
-- [ ] Escrever o workflow de CI/CD (GitHub Actions) que faz deploy no push para `main`
+- [x] Testes para a verificação de assinatura e para o roteamento de comandos — Vitest (`test/`)
+- [x] Configurar lint/format (Biome ou ESLint + Prettier) — **ESLint + Prettier** (flat config)
+- [x] Escrever o workflow de CI/CD (GitHub Actions) que faz deploy no push para `main` — `.github/workflows/ci.yml`
 
 ### Evolução (backlog)
 - [ ] Refatorar o roteamento para um registry de comandos (padrão Command) ao adicionar o 2º comando

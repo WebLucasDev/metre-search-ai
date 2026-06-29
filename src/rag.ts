@@ -1,11 +1,17 @@
 import type { Bindings } from './index'
 
+/** Resposta do RAG: o texto gerado e os arquivos da base que a embasaram. */
+export interface RagAnswer {
+  text: string
+  sources: string[]
+}
+
 /**
  * Abstração de RAG da qual o handler depende (Dependency Inversion): o fluxo do bot
  * conhece apenas esta interface, nunca a implementação concreta de AI Search.
  */
 export interface RagProvider {
-  ask(question: string): Promise<string>
+  ask(question: string): Promise<RagAnswer>
 }
 
 const INSTANCE_NAME = 'metre-search-ai-rag'
@@ -25,15 +31,26 @@ const FALLBACK =
 class AiSearchProvider implements RagProvider {
   constructor(private readonly ai: Ai) {}
 
-  async ask(question: string): Promise<string> {
+  async ask(question: string): Promise<RagAnswer> {
     const result = await this.ai.autorag(INSTANCE_NAME).aiSearch({
       query: question,
       system_prompt: SYSTEM_PROMPT,
     })
 
-    const answer = result.response?.trim()
-    return answer ? answer : FALLBACK
+    const text = result.response?.trim()
+    if (!text) return { text: FALLBACK, sources: [] }
+
+    return { text, sources: uniqueSources(result.data) }
   }
+}
+
+/** Nomes de arquivo distintos dos trechos recuperados, preservando a ordem por relevância. */
+function uniqueSources(data: { filename: string }[]): string[] {
+  const seen = new Set<string>()
+  for (const chunk of data) {
+    if (chunk.filename) seen.add(chunk.filename)
+  }
+  return [...seen]
 }
 
 /** Factory: devolve a implementação concreta a partir do ambiente do Worker. */

@@ -55,7 +55,10 @@ const response = await fetch(url, {
 })
 
 if (!response.ok) {
-  console.error(`Falha ao registrar (${response.status}):`, await response.text())
+  console.error(
+    `Falha ao registrar (${response.status}):`,
+    await response.text(),
+  )
   process.exit(1)
 }
 
